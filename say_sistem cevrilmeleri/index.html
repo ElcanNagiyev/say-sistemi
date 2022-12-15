@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .valid1, .valid2{
+            margin-left: 10px;
+            width: 200px;
+            height: 20px;
+            border: 0.5px black solid;
+            display: inline;
+            padding: 2px;
+        }
+
+    </style>
+<body>
+
+    <input type="number" class="input1" placeholder="onluq say sistemi">
+    <button class="hes1">hesabla</button>
+    <div class="valid1"> 2-lik say sistemi</div>
+    <div class="div-invalid"></div>
+
+    <input type="text" class="input2" placeholder="ikilik say sistemi">
+    <button class="hes2">hesabla</button>
+    <div class="valid2"> 10-lik say sistemi</div>
+
+
+
+    <script>
+
+       // 10-luq say sisteminden 2-liye cevirme
+        let input10_luq=document.querySelector('.input1');
+        let hesabla1=document.querySelector('.hes1');
+        let valid1_2lik=document.querySelector('.valid1');
+
+        input10_luq.addEventListener('keyup', (event=>{
+
+            a=event.target.value
+            s=""
+
+            while(a!=0){
+                b=a%2;
+                s=s+b;
+                a=parseInt(a/2);
+            }
+
+            s=s.split('').reverse().join('')
+        }));
+
+        hesabla1.addEventListener('click', function(){
+
+            valid1_2lik.innerText=`${s}`
+        })
+
+
+        // 2-lik say sisteminden 10-luga cevirme
+        let input2_luq=document.querySelector('.input2');
+        let hesabla2=document.querySelector('.hes2');
+        let valid2_10lik=document.querySelector('.valid2');
+
+        input2_luq.addEventListener('keyup', (event)=>{
+
+            a=String(event.target.value)
+            a=a.split('').reverse().join('')
+
+            s1=0;
+
+            for(i=0; i<a.length; i++){
+                s1=s1+a[i]*(2**i);
+            }
+        })
+
+        hesabla2.addEventListener('click', function(){
+
+            valid2_10lik.innerText=`${s1}`
+        })
+
+
+
+        
+
+    </script>
+    
+</body>
+</html>
